@@ -1,6 +1,9 @@
 package cidergo
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestEscape(t *testing.T) {
 	e1 := escape("Hello, World!")
@@ -33,6 +36,14 @@ func TestItfToXxx(t *testing.T) {
 
 	_, err = itfToString(i)
 	if err == nil {
+		t.Fail()
+	}
+}
+
+func TestSprintfEscape(t *testing.T) {
+	s := SprintfEscape("abc %v %v", `d"ef`, `99`)
+	if s != `abc "d\"ef" "99"` {
+		fmt.Println("s is:", s)
 		t.Fail()
 	}
 }

@@ -37,7 +37,7 @@ func (c *CiderClient) Send(cmd string) (itf interface{}, err error) {
 	if err != nil {
 		return
 	}
-	var response Response
+	var response StatusResponse
 	err = json.Unmarshal(raw, &response)
 	if err != nil {
 		return

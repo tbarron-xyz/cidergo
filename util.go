@@ -17,11 +17,11 @@ func verbose(args ...interface{}) {
 }
 
 func SprintfEscape(format string, args ...string) (formatted string) {
-	escapedArgs := []string{}
+	escapedArgs := []interface{}{}
 	for _, e := range args {
 		escapedArgs = append(escapedArgs, escape(e))
 	}
-	formatted = fmt.Sprintf(format, escapedArgs)
+	formatted = fmt.Sprintf(format, escapedArgs...)
 	return
 }
 

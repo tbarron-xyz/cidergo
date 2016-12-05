@@ -6,13 +6,13 @@ import (
 	"github.com/gorilla/websocket"
 )
 
-type Response struct {
+type StatusResponse struct {
 	Status   string
 	Response interface{}
 	Error    string
 }
 
-func (res *Response) Parse() (itf interface{}, err error) {
+func (res *StatusResponse) Parse() (itf interface{}, err error) {
 	if res.Status == "success" {
 		itf = res.Response
 	} else {
