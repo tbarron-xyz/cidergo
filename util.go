@@ -36,7 +36,7 @@ func readOnce(ws *websocket.Conn) (msg []byte, err error) {
 }
 
 func writeOnce(ws *websocket.Conn, cmd string) (err error) {
-	err = ws.WriteMessage(Txtm, []byte(strings.TrimSpace(cmd)))
+	err = ws.WriteMessage(txtm, []byte(strings.TrimSpace(cmd)))
 	if err != nil {
 		verbose("Write error: " + err.Error())
 		ws.Close()

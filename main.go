@@ -21,4 +21,4 @@ func (res *StatusResponse) Parse() (itf interface{}, err error) {
 	return
 }
 
-var Txtm = websocket.TextMessage
+var txtm = websocket.TextMessage
