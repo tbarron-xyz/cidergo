@@ -86,3 +86,38 @@ func itfToInt(itf interface{}) (i int, err error) {
 	}
 	return
 }
+
+func itfToBool(itf interface{}) (b bool, err error) {
+	switch itf.(type) {
+	case bool:
+		b = itf.(bool)
+	default:
+		err = fmt.Errorf("Not a bool.")
+	}
+	return
+}
+
+func itfToArrayString(itf interface{}) (s []string, err error) {
+	switch itf.(type) {
+	case []interface{}:
+		itfArray := itf.([]interface{})
+		s, err = arrayItfToArrayString(itfArray)
+	default:
+		err = fmt.Errorf("Not a []string.")
+	}
+	return
+}
+
+func arrayItfToArrayString(arrayItf []interface{}) (arrayString []string, err error) {
+	arrayString = make([]string, len(arrayItf))
+	for i, e := range arrayItf {
+		switch e.(type) {
+		case string:
+			arrayString[i] = e.(string)
+		default:
+			err = fmt.Errorf("Argument %v is not a string.", i)
+			break
+		}
+	}
+	return
+}

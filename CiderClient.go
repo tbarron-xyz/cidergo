@@ -65,3 +65,23 @@ func (c *CiderClient) SendString(cmd string) (s string, err error) {
 	s, err = itfToString(res)
 	return
 }
+
+// Sends, and returns a []string
+func (c *CiderClient) SendArrayString(cmd string) (s []string, err error) {
+	res, err := c.Send(cmd)
+	if err != nil {
+		return
+	}
+	s, err = itfToArrayString(res)
+	return
+}
+
+// Sends, and returns a bool
+func (c *CiderClient) SendBool(cmd string) (b bool, err error) {
+	res, err := c.Send(cmd)
+	if err != nil {
+		return
+	}
+	b, err = itfToBool(res)
+	return
+}
