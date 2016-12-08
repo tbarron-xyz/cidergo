@@ -38,6 +38,36 @@ func TestItfToXxx(t *testing.T) {
 	if err == nil {
 		t.Fail()
 	}
+
+	b := true
+	b2, err := itfToBool(b)
+	if err != nil || b2 != b {
+		t.Fail()
+	}
+
+	_, err = itfToBool(s)
+	if err == nil {
+		t.Fail()
+	}
+
+	arrayItf := []interface{}{}
+	arrayItf = append(arrayItf, "abc")
+	arrayString, err := itfToArrayString(arrayItf)
+	if err != nil || arrayString[0] != "abc" {
+		t.Fail()
+	}
+
+	arrayItf = append(arrayItf, 5)
+	_, err = itfToArrayString(arrayItf)
+	if err == nil {
+		t.Fail()
+	}
+
+	notArrayItf := []int{}
+	_, err = itfToArrayString(notArrayItf)
+	if err == nil {
+		t.Fail()
+	}
 }
 
 func TestSprintfEscape(t *testing.T) {

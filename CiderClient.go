@@ -25,6 +25,7 @@ func NewCiderClient(url string, port int) (client *CiderClient, err error) {
 	return
 }
 
+// Sends and returns the raw response
 func (c *CiderClient) SendRaw(cmd string) (response []byte, err error) {
 	response, err = writeReadOnce(c.ws, cmd)
 	return
